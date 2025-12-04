@@ -10,7 +10,7 @@
   --bozza-dark: #111827;
   --bozza-light-gray: #f3f4f6;
   --bozza-light-blue: #e0f2fe;
-  
+
   /* Shadcn/ui colors */
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
@@ -55,88 +55,121 @@ body {
   .bozza-gradient {
     background: linear-gradient(135deg, var(--bozza-primary) 0%, #035994 100%);
   }
-  
+
   .bozza-gradient-text {
     background: linear-gradient(135deg, var(--bozza-primary) 0%, var(--bozza-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .hover-float {
     transition: transform 0.3s ease;
   }
-  
+
   .hover-float:hover {
     transform: translateY(-5px);
   }
-  
+
   .section-padding {
     @apply px-6 md:px-10 lg:px-20 xl:px-32;
   }
-  
+
   @keyframes spin-slow {
     from {
       transform: rotate(0deg);
     }
+
     to {
       transform: rotate(360deg);
     }
   }
-  
+
   @keyframes spin-reverse {
     from {
       transform: rotate(0deg);
     }
+
     to {
       transform: rotate(-360deg);
     }
   }
-  
+
   .animate-spin-slow {
     animation: spin-slow 20s linear infinite;
   }
-  
+
   .animate-spin-reverse {
     animation: spin-reverse 15s linear infinite;
   }
-  
+
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0);
     }
+
     50% {
       transform: translateY(-10px);
     }
   }
-  
+
   @keyframes float-diagonal {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translate(0, 0) rotate(12deg);
     }
+
     50% {
       transform: translate(10px, -10px) rotate(12deg);
     }
   }
-  
+
   @keyframes float-reverse {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translate(0, 0) rotate(-12deg);
     }
+
     50% {
       transform: translate(-10px, -10px) rotate(-12deg);
     }
   }
-  
+
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
-  
+
   .animate-float-diagonal {
     animation: float-diagonal 4s ease-in-out infinite;
   }
-  
+
   .animate-float-reverse {
     animation: float-reverse 3.5s ease-in-out infinite;
   }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+  }
+}
+
+/* Minimalist Blue Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bozza-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #023452;
 }

@@ -53,18 +53,18 @@ const testimonials = [
 export default function TestimonialsSection() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   // Detectar se é mobile
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-  
+
   const testimonialsPerPage = isMobile ? 1 : 3;
   const totalPages = Math.ceil(testimonials.length / testimonialsPerPage);
 
@@ -83,7 +83,7 @@ export default function TestimonialsSection() {
 
   const handleDragEnd = (event: any, info: PanInfo) => {
     const swipeThreshold = 50;
-    
+
     if (info.offset.x > swipeThreshold) {
       prevPage();
     } else if (info.offset.x < -swipeThreshold) {
@@ -103,10 +103,10 @@ export default function TestimonialsSection() {
         />
         <div className="absolute inset-0 bg-bozza-primary/80" />
       </div>
-      
+
       <div className="section-padding relative z-10">
-        <motion.h2 
-          className="text-3xl md:text-4xl font-bold text-white text-center mb-16"
+        <motion.h2
+          className="text-2xl md:text-3xl font-bold text-white text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -120,7 +120,7 @@ export default function TestimonialsSection() {
             <motion.div
               className="flex gap-8 cursor-grab active:cursor-grabbing"
               animate={{ x: `-${currentPage * 100}%` }}
-              transition={{ 
+              transition={{
                 type: "spring",
                 stiffness: 300,
                 damping: 30,
@@ -144,8 +144,8 @@ export default function TestimonialsSection() {
                         className="group relative"
                         initial={{ opacity: 0, scale: 0.8, rotateY: -30 }}
                         animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                        transition={{ 
-                          duration: 0.6, 
+                        transition={{
+                          duration: 0.6,
                           delay: index * 0.1,
                           type: "spring",
                           stiffness: 100
@@ -163,7 +163,7 @@ export default function TestimonialsSection() {
                                 </div>
                                 <Quote className="w-6 h-6 text-bozza-secondary absolute -bottom-2 -right-2 bg-white rounded-full p-1" />
                               </div>
-                              
+
                               {/* Name and company */}
                               <div className="flex-grow">
                                 <h4 className="font-bold text-bozza-primary text-lg leading-tight">
@@ -174,7 +174,7 @@ export default function TestimonialsSection() {
                                 </p>
                               </div>
                             </div>
-                            
+
                             {/* Testimonial text */}
                             <div className="relative flex-grow">
                               <div className="absolute -top-4 -left-2 text-6xl text-bozza-secondary/10 font-serif">"</div>
@@ -183,10 +183,10 @@ export default function TestimonialsSection() {
                               </p>
                               <div className="absolute -bottom-2 right-2 text-6xl text-bozza-secondary/10 font-serif rotate-180">"</div>
                             </div>
-                            
+
                           </div>
                         </div>
-                        
+
                         {/* Hover effect background */}
                         <div className="absolute inset-0 bg-gradient-to-br from-bozza-secondary/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
                       </motion.div>
@@ -221,17 +221,16 @@ export default function TestimonialsSection() {
             <button
               key={index}
               onClick={() => setCurrentPage(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                currentPage === index
+              className={`h-2 rounded-full transition-all duration-300 ${currentPage === index
                   ? 'w-8 bg-bozza-secondary'
                   : 'w-2 bg-gray-300 hover:bg-gray-400'
-              }`}
+                }`}
             />
           ))}
         </div>
 
         {/* CTA Button */}
-        <motion.div 
+        <motion.div
           className="text-center mt-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

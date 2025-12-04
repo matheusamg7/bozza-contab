@@ -1,26 +1,21 @@
 'use client';
 
-import { Award, Target, Heart, Lightbulb } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const values = [
   {
-    icon: Award,
     title: 'Excelência',
     description: 'Comprometimento com a qualidade e precisão em cada serviço prestado.',
   },
   {
-    icon: Target,
     title: 'Foco no Cliente',
     description: 'Soluções personalizadas que atendem às necessidades específicas de cada empresa.',
   },
   {
-    icon: Heart,
     title: 'Transparência',
     description: 'Relacionamento baseado em confiança, ética e comunicação clara.',
   },
   {
-    icon: Lightbulb,
     title: 'Inovação',
     description: 'Tecnologia e processos modernos para resultados mais eficientes.',
   },
@@ -31,83 +26,64 @@ export default function AboutUsSection() {
     <section id="sobre" className="py-20 bg-white">
       <div className="section-padding">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-bozza-dark relative inline-block">
+          {/* Título em cima, à esquerda */}
+          <div className="mb-12 text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-bozza-dark mb-4">
               Sobre a Bozza Contabilidade
-              <span className="absolute -bottom-2 left-0 w-16 h-0.5 bg-bozza-dark/50"></span>
             </h2>
+            <div className="w-20 h-1.5 bg-bozza-secondary rounded-full" />
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Left Column - Text */}
-            <div>
+            <div className="order-1">
               <p className="text-lg text-bozza-gray mb-6 leading-relaxed">
-                Há mais de 15 anos no mercado, a Bozza Contabilidade nasceu com o propósito 
-                de revolucionar a forma como as empresas lidam com suas obrigações contábeis 
+                Há mais de 15 anos no mercado, a Bozza Contabilidade nasceu com o propósito
+                de revolucionar a forma como as empresas lidam com suas obrigações contábeis
                 e fiscais.
               </p>
-              
-              <p className="text-lg text-bozza-gray mb-12 leading-relaxed">
-                Combinamos expertise técnica, tecnologia de ponta e atendimento humanizado 
-                para entregar soluções que vão além dos números, impactando positivamente 
+
+              <p className="text-lg text-bozza-gray mb-10 leading-relaxed">
+                Combinamos expertise técnica, tecnologia de ponta e atendimento humanizado
+                para entregar soluções que vão além dos números, impactando positivamente
                 os resultados dos nossos clientes.
               </p>
 
-              {/* Values in minimalist grid */}
-              <div className="grid grid-cols-2 gap-8">
-                {values.map((value, index) => {
-                  const Icon = value.icon;
-                  return (
-                    <div key={index} className="group">
-                      <motion.div 
-                        className="w-10 h-10 bg-bozza-secondary/10 rounded-lg flex items-center justify-center mb-3 group-hover:bg-bozza-secondary/20 transition-colors"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ 
-                          opacity: 1, 
-                          scale: 1,
-                          transition: {
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 15,
-                            delay: index * 0.1
-                          }
-                        }}
-                        whileHover={{
-                          scale: 1.1,
-                          rotate: 5,
-                          transition: {
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 10
-                          }
-                        }}
-                        viewport={{ once: true }}
-                      >
-                        <Icon size={20} className="text-bozza-secondary" />
-                      </motion.div>
-                      <h4 className="font-semibold text-bozza-dark mb-1">{value.title}</h4>
-                      <p className="text-sm text-bozza-gray leading-relaxed">{value.description}</p>
+              {/* Values */}
+              <div className="space-y-4">
+                {values.map((value, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-start gap-3"
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                      transition: { delay: index * 0.1 }
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="text-bozza-secondary font-bold text-lg">•</span>
+                    <div>
+                      <span className="font-bold text-bozza-secondary text-lg">{value.title}</span>
+                      <span className="text-gray-600 text-base"> — {value.description}</span>
                     </div>
-                  );
-                })}
+                  </motion.div>
+                ))}
               </div>
             </div>
 
-            {/* Right Column - Image with Minimalist Frame */}
-            <div className="relative">
-              {/* Decorative Elements */}
+            {/* Right Column - Image */}
+            <div className="relative order-2">
               <div className="absolute -top-4 -left-4 w-20 h-20 border-2 border-bozza-secondary/30 rounded-tl-3xl z-10" />
               <div className="absolute -bottom-4 -right-4 w-20 h-20 border-2 border-bozza-primary/30 rounded-br-3xl z-10" />
-              
-              {/* Main Image Container */}
               <div className="relative rounded-3xl overflow-hidden shadow-lg group">
-                <div className="aspect-square relative">
+                <div className="aspect-[4/5] relative">
                   <img
                     src="/claude images/Image_fx.jpg"
                     alt="Escritório de contabilidade moderno"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-bozza-dark/60 via-transparent to-transparent" />
                 </div>
               </div>
